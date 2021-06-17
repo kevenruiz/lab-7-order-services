@@ -7,5 +7,22 @@ describe('testing out the routes for food orders', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('', async)
+  it('creating dish with the POST route', async () => {
+    const res = await request(app)
+      .post('/api/v1/food')
+      .send({
+        name: 'Alfredo',
+        calories: 500,
+        country: 'Italia'
+      });
+
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Alfredo',
+      calories: 500,
+      country: 'Italia'
+
+    });
+
+  });
 });

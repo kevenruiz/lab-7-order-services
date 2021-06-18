@@ -35,4 +35,31 @@ describe('testing out the routes for food orders', () => {
     expect(res.body).toEqual(food);
   });
 
+  it('getting all the dishes the dish by GET', async () => {
+
+
+    const pizza = await Food.insert({
+      name: 'pizza Margarita',
+      calories: 450,
+      country: 'Italia'
+    });
+
+    const taco = await Food.insert({
+      name: 'taco de chorizo',
+      calories: 1,
+      country: 'Mexico'
+    });
+
+    const gyro = await Food.insert({
+      name: 'Lamb Gyro',
+      calories: 35,
+      country: 'Greece'
+    });
+
+    const res = await request(app).get('/api/v1/foods');
+    expect(res.body).toEqual([pizza, taco, gyro]);
+
+
+  });
+
 });

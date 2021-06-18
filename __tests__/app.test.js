@@ -80,6 +80,7 @@ describe('testing out the routes for food orders', () => {
       country: 'Mexico'
     });
     const changedMyMindTaco = await Food.insert({
+      id: '2',
       name: 'veggie taco',
       calories: 0,
       country: 'not-mexico lol'
@@ -87,7 +88,12 @@ describe('testing out the routes for food orders', () => {
 
     const res = await request(app).put(`/api/v1/foods/${meatTaco.id}`).send(changedMyMindTaco);
 
-    expect(res.body).toEqual(changedMyMindTaco);
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'veggie taco',
+      calories: 0,
+      country: 'not-mexico lol'
+    });
   });
 
 });

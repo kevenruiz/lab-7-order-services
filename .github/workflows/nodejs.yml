@@ -18,3 +18,7 @@ jobs:
       env:
         CI: true
         DATABASE_URL: postgres://alchemy:alchemy@postgres:5432/alchemy
+        TWILIO_NUMBER: ${{ +16144186314 }}
+        TWILIO_ACCOUNT_SID: ${{ AC845d4637ae86c541eeebe443bb70c2b3 }}
+        TWILIO_AUTH_TOKEN: ${{ e5a8e2931767be29eb10ea09502fa3e8 }}
+        ORDER_HANDLER_NUMBER: ${{ 9718657971 }}

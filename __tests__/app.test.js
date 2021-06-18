@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Food from '../lib/models/Food.js';
 
 describe('testing out the routes for food orders', () => {
   beforeEach(() => {
@@ -22,4 +23,16 @@ describe('testing out the routes for food orders', () => {
     });
 
   });
+
+  it('getting a dish by id via GET', async () => {
+    const food = await Food.insert({
+      name: 'Burger',
+      calories: 750,
+      country: 'America'
+    });
+
+    const res = await request(app).get(`/api/v1/foods/${food.id}`);
+    expect(res.body).toEqual(food);
+  });
+
 });

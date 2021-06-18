@@ -62,4 +62,15 @@ describe('testing out the routes for food orders', () => {
 
   });
 
+  it('delete a food named taco', async () => {
+    const byeTaco = await Food.insert({
+      name: 'Taco was eaten',
+      calories: 0,
+      country: 'Mexico'
+    });
+
+    const res = await request(app).delete(`/api/v1/foods/${byeTaco.id}`);
+    expect(res.body).toEqual(byeTaco);
+  });
+
 });

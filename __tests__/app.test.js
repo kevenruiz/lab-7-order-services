@@ -95,6 +95,9 @@ describe('testing out the routes for food orders', () => {
       country: 'not-mexico lol'
     });
   });
+});
+
+describe.skip('testing SMS app', () => {
 
   it('creates a new order in our database and send a text message', async () => {
     return request(app)

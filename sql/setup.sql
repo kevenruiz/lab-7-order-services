@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS foods;
 
 CREATE TABLE foods (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name TEXT NOT NULL,
-  calories INTEGER NOT NULL,
-  country TEXT NOT NULL
+  name TEXT,
+  calories INTEGER,
+  country TEXT 
 );
 

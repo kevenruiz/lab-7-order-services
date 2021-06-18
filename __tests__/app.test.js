@@ -96,4 +96,13 @@ describe('testing out the routes for food orders', () => {
     });
   });
 
+  it('creates a new order in our database and send a text message', async () => {
+    return request(app)
+      .post('api/v1/foods')
+      .send({ name: 'First text', calories: 25, country: 'Mexico' })
+      .then((res) => {
+        expect(res.body).toEqual({ id: '1', name: 'First text' });
+      });
+  });
+
 });

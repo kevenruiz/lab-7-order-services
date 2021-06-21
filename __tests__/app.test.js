@@ -97,15 +97,19 @@ describe('testing out the routes for food orders', () => {
   });
 });
 
-describe.skip('testing SMS app', () => {
 
-  it('creates a new order in our database and send a text message', async () => {
-    return request(app)
-      .post('api/v1/foods')
-      .send({ name: 'First text', calories: 25, country: 'Mexico' })
-      .then((res) => {
-        expect(res.body).toEqual({ id: '1', name: 'First text' });
-      });
+
+
+describe('testing out the routes for food orders', () => {
+  beforeEach(() => {
+    return setup(pool);
   });
 
+  it('creating dish with the POST route', async () => {
+    const res = await request(app)
+      .post('/api/v1/foods')
+      .send({ name: 'First text', calories: 25, country: 'Mexico' });
+
+    expect(res.body).toEqual({ id: '1', name: 'First text', calories: 25, country: 'Mexico' });
+  });
 });
